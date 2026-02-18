@@ -1,0 +1,191 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  MERCHANT
+  ADMIN
+}
+
+enum HotelStatus {
+  DRAFT
+  PENDING
+  APPROVED
+  REJECTED
+  OFFLINE
+}
+
+enum NearbySpotType {
+  SCENIC
+  TRANSPORT
+  SHOPPING
+}
+
+enum BedType {
+  SINGLE
+  DOUBLE
+  TWIN
+  KING
+  SUITE
+}
+
+enum PriceRuleType {
+  WEEKEND
+  HOLIDAY
+  CUSTOM
+}
+
+enum PromotionType {
+  DISCOUNT
+  REDUCTION
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique @db.VarChar(50)
+  password  String   @db.VarChar(255)
+  role      UserRole
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  hotels     Hotel[]
+  reviewLogs ReviewLog[]
+
+  @@map("users")
+}
+
+model Hotel {
+  id          Int         @id @default(autoincrement())
+  nameZh      String      @map("name_zh") @db.VarChar(100)
+  nameEn      String      @map("name_en") @db.VarChar(200)
+  address     String      @db.VarChar(500)
+  city        String      @db.VarChar(50)
+  starLevel   Int         @map("star_level")
+  status      HotelStatus @default(DRAFT)
+  description String      @db.Text
+  phone       String      @db.VarChar(20)
+  minPrice    Float?      @map("min_price")
+  merchantId  Int         @map("merchant_id")
+
+  merchant   User         @relation(fields: [merchantId], references: [id])
+  images     HotelImage[]
+  roomTypes  RoomType[]
+  nearbySpots NearbySpot[]
+  promotions  Promotion[]
+  reviewLogs  ReviewLog[]
+  banners     Banner[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([city])
+  @@index([status])
+  @@index([merchantId])
+  @@map("hotels")
+}
+
+model HotelImage {
+  id      Int     @id @default(autoincrement())
+  hotelId Int     @map("hotel_id")
+  url     String  @db.VarChar(500)
+  sort    Int     @default(0)
+  isCover Boolean @default(false) @map("is_cover")
+
+  hotel Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+
+  @@map("hotel_images")
+}
+
+model RoomType {
+  id          Int      @id @default(autoincrement())
+  hotelId     Int      @map("hotel_id")
+  name        String   @db.VarChar(100)
+  bedType     BedType  @map("bed_type")
+  area        Float
+  maxGuests   Int      @map("max_guests")
+  basePrice   Float    @map("base_price")
+  stock       Int      @default(0)
+  description String?  @db.Text
+  facilities  String?  @db.Text // JSON string array
+  images      String?  @db.Text // JSON string array
+
+  hotel      Hotel       @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  priceRules PriceRule[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("room_types")
+}
+
+model PriceRule {
+  id         Int           @id @default(autoincrement())
+  roomTypeId Int           @map("room_type_id")
+  type       PriceRuleType
+  startDate  DateTime      @map("start_date") @db.Date
+  endDate    DateTime      @map("end_date") @db.Date
+  price      Float
+
+  roomType RoomType @relation(fields: [roomTypeId], references: [id], onDelete: Cascade)
+
+  @@map("price_rules")
+}
+
+model NearbySpot {
+  id       Int            @id @default(autoincrement())
+  hotelId  Int            @map("hotel_id")
+  type     NearbySpotType
+  name     String         @db.VarChar(100)
+  distance String         @db.VarChar(50)
+
+  hotel Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+
+  @@map("nearby_spots")
+}
+
+model Promotion {
+  id           Int           @id @default(autoincrement())
+  hotelId      Int           @map("hotel_id")
+  type         PromotionType
+  discountRate Float?        @map("discount_rate")
+  reduceAmount Float?        @map("reduce_amount")
+  minAmount    Float?        @map("min_amount")
+  startDate    DateTime      @map("start_date") @db.Date
+  endDate      DateTime      @map("end_date") @db.Date
+
+  hotel Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+
+  @@map("promotions")
+}
+
+model ReviewLog {
+  id         Int         @id @default(autoincrement())
+  hotelId    Int         @map("hotel_id")
+  reviewerId Int         @map("reviewer_id")
+  fromStatus HotelStatus @map("from_status")
+  toStatus   HotelStatus @map("to_status")
+  reason     String?     @db.Text
+  createdAt  DateTime    @default(now()) @map("created_at")
+
+  hotel    Hotel @relation(fields: [hotelId], references: [id], onDelete: Cascade)
+  reviewer User  @relation(fields: [reviewerId], references: [id])
+
+  @@map("review_logs")
+}
+
+model Banner {
+  id       Int     @id @default(autoincrement())
+  imageUrl String  @map("image_url") @db.VarChar(500)
+  hotelId  Int?    @map("hotel_id")
+  sort     Int     @default(0)
+  isActive Boolean @default(true) @map("is_active")
+
+  hotel Hotel? @relation(fields: [hotelId], references: [id], onDelete: SetNull)
+
+  @@map("banners")
+}

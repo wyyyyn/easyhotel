@@ -1,0 +1,314 @@
+/* ========================================
+   首页样式
+   ======================================== */
+
+$primary: #ff6b35;
+$primary-light: #fff3ed;
+$text-primary: #333;
+$text-secondary: #666;
+$text-tertiary: #999;
+$bg-page: #f5f5f5;
+$bg-white: #fff;
+$border-color: #eee;
+$radius-md: 12px;
+$radius-lg: 16px;
+
+.home {
+  min-height: 100vh;
+  background-color: $bg-page;
+  padding-bottom: 40px;
+}
+
+/* ---- 搜索区域 ---- */
+.search-section {
+  background: linear-gradient(180deg, $primary 0%, $primary 60%, $bg-page 100%);
+  padding: 20px 24px 40px;
+}
+
+.search-card {
+  background: $bg-white;
+  border-radius: $radius-lg;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+  &__row {
+    padding: 20px 0;
+    border-bottom: 1px solid $border-color;
+
+    &--input {
+      border-bottom: none;
+    }
+  }
+
+  &__label {
+    font-size: 24px;
+    color: $text-tertiary;
+    margin-bottom: 8px;
+  }
+
+  &__value {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__city {
+    font-size: 36px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__arrow {
+    font-size: 36px;
+    color: $text-tertiary;
+  }
+
+  // 日期组
+  &__date-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__date-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__date-label {
+    font-size: 24px;
+    color: $text-tertiary;
+    margin-bottom: 8px;
+  }
+
+  &__date-value {
+    font-size: 32px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__nights {
+    background-color: $primary-light;
+    border-radius: 20px;
+    padding: 8px 20px;
+  }
+
+  &__nights-text {
+    font-size: 24px;
+    color: $primary;
+    font-weight: 500;
+  }
+
+  // 关键词输入
+  &__input {
+    width: 100%;
+    height: 72px;
+    background-color: #f7f7f7;
+    border-radius: 36px;
+    padding: 0 28px;
+    font-size: 28px;
+    color: $text-primary;
+  }
+
+  // 搜索按钮
+  &__btn {
+    margin-top: 24px;
+    height: 88px;
+    background: linear-gradient(135deg, $primary 0%, #ff8a5c 100%);
+    border-radius: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__btn-text {
+    font-size: 32px;
+    font-weight: 600;
+    color: #fff;
+  }
+}
+
+/* ---- Banner 轮播 ---- */
+.banner-section {
+  padding: 0 24px;
+  margin-top: -16px;
+}
+
+.banner-swiper {
+  height: 280px;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+.banner-image {
+  width: 100%;
+  height: 280px;
+}
+
+/* ---- 通用 section ---- */
+.section {
+  margin: 24px 24px 0;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__more-text {
+    font-size: 24px;
+    color: $text-tertiary;
+  }
+}
+
+/* ---- 酒店网格 ---- */
+.hotel-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.hotel-card {
+  width: calc(50% - 8px);
+  background: $bg-white;
+  border-radius: $radius-md;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  &__img {
+    width: 100%;
+    height: 200px;
+  }
+
+  &__info {
+    padding: 16px;
+  }
+
+  &__name {
+    font-size: 28px;
+    font-weight: 500;
+    color: $text-primary;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__star {
+    font-size: 22px;
+    color: $primary;
+    margin-top: 6px;
+    display: block;
+  }
+
+  &__price-row {
+    display: flex;
+    align-items: baseline;
+    margin-top: 10px;
+  }
+
+  &__price {
+    font-size: 32px;
+    font-weight: 600;
+    color: #ff4d4f;
+  }
+
+  &__price-unit {
+    font-size: 22px;
+    color: $text-tertiary;
+    margin-left: 4px;
+  }
+
+  &__tag {
+    display: inline-flex;
+    margin-top: 8px;
+    background-color: #fff1f0;
+    border-radius: 4px;
+    padding: 2px 8px;
+  }
+
+  &__tag-text {
+    font-size: 20px;
+    color: #ff4d4f;
+  }
+
+  // 骨架屏
+  &--skeleton {
+    .skeleton-block {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 50%, #f2f2f2 75%);
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.4s ease infinite;
+    }
+
+    .skeleton-line {
+      height: 24px;
+      background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 50%, #f2f2f2 75%);
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.4s ease infinite;
+      border-radius: 4px;
+      margin-top: 12px;
+
+      &--title {
+        width: 80%;
+      }
+
+      &--short {
+        width: 50%;
+      }
+
+      &--price {
+        width: 40%;
+        height: 32px;
+      }
+    }
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ---- 搜索历史 ---- */
+.history-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.history-tag {
+  background: $bg-white;
+  border-radius: 24px;
+  padding: 12px 24px;
+
+  &__text {
+    font-size: 24px;
+    color: $text-secondary;
+  }
+}
+
+/* ---- 空状态 ---- */
+.empty-state {
+  padding: 60px 0;
+  text-align: center;
+
+  &__text {
+    font-size: 28px;
+    color: $text-tertiary;
+  }
+}

@@ -1,0 +1,215 @@
+/* ========================================
+   日历范围选择组件样式
+   ======================================== */
+
+$primary: #ff6b35;
+$primary-light: rgba(255, 107, 53, 0.12);
+$text-primary: #333;
+$text-secondary: #666;
+$text-disabled: #ccc;
+$text-weekend: #ff6b35;
+$bg-white: #fff;
+$border-color: #eee;
+
+.calendar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+}
+
+.calendar-container {
+  width: 100%;
+  height: 80vh;
+  background-color: $bg-white;
+  border-radius: 24px 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+// 头部
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 28px 32px;
+  border-bottom: 1px solid $border-color;
+
+  &__title {
+    font-size: 34px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__close {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__close-icon {
+    font-size: 44px;
+    color: $text-secondary;
+    line-height: 1;
+  }
+}
+
+// 星期栏
+.calendar-weekdays {
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 1px solid $border-color;
+
+  &__item {
+    flex: 1;
+    text-align: center;
+    font-size: 24px;
+    color: $text-secondary;
+
+    &--weekend {
+      color: $text-weekend;
+    }
+  }
+}
+
+// 月份滚动区域
+.calendar-body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+// 月份
+.calendar-month {
+  &__title {
+    padding: 28px 32px 16px;
+    font-size: 30px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+}
+
+// 日期单元格
+.calendar-day {
+  width: calc(100% / 7);
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+
+  &--empty {
+    background: transparent;
+  }
+
+  &__number {
+    font-size: 30px;
+    color: $text-primary;
+    line-height: 1.2;
+  }
+
+  &__label {
+    font-size: 20px;
+    margin-top: 2px;
+    line-height: 1;
+  }
+
+  // 禁用（过去的日期）
+  &--disabled {
+    .calendar-day__number {
+      color: $text-disabled;
+    }
+  }
+
+  // 周末
+  &--weekend {
+    .calendar-day__number {
+      color: $text-weekend;
+    }
+  }
+
+  // 选中入住
+  &--start {
+    background: $primary;
+    border-radius: 12px 0 0 12px;
+
+    .calendar-day__number,
+    .calendar-day__label {
+      color: #fff;
+    }
+  }
+
+  // 选中退房
+  &--end {
+    background: $primary;
+    border-radius: 0 12px 12px 0;
+
+    .calendar-day__number,
+    .calendar-day__label {
+      color: #fff;
+    }
+  }
+
+  // 入住退房同一天的情况
+  &--start#{&}--end {
+    border-radius: 12px;
+  }
+
+  // 范围内
+  &--range {
+    background: $primary-light;
+
+    .calendar-day__number {
+      color: $primary;
+    }
+  }
+}
+
+// 底部确认
+.calendar-footer {
+  padding: 20px 32px;
+  border-top: 1px solid $border-color;
+  background-color: $bg-white;
+
+  &__btn {
+    height: 88px;
+    border-radius: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--active {
+      background-color: $primary;
+    }
+
+    &--disabled {
+      background-color: #ddd;
+    }
+  }
+
+  &__btn-text {
+    font-size: 32px;
+    font-weight: 600;
+    color: #fff;
+  }
+}

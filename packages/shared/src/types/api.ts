@@ -1,0 +1,21 @@
+export interface ApiResponse<T = unknown> {
+  code: number;
+  message: string;
+  data: T;
+}
+
+export interface PaginatedResponse<T> {
+  items: T[];
+  total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
+}
+
+export interface Banner {
+  id: number;
+  imageUrl: string;
+  hotelId: number | null;
+  sort: number;
+  isActive: boolean;
+}

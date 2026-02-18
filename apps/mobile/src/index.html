@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="theme-color" content="#FF6B35" />
+  <title>易宿 - 酒店预订</title>
+  <script>
+    // 动态设置 rem 基准值（适配 750 设计稿，H5 端限制最大宽度）
+    !function(n){
+      var MAX=450,DESIGN=750,BASE=DESIGN/100;
+      var e=n.document,t=e.documentElement;
+      function calc(){
+        var w=Math.min(t.clientWidth,MAX);
+        t.style.fontSize=w/BASE+"px";
+      }
+      n.addEventListener("resize",calc,!1);
+      e.addEventListener("DOMContentLoaded",calc,!1);
+      calc();
+    }(window);
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+</html>

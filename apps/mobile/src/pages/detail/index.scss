@@ -1,0 +1,427 @@
+/* ========================================
+   酒店详情页样式
+   ======================================== */
+
+$primary: #ff6b35;
+$primary-light: #fff3ed;
+$text-primary: #333;
+$text-secondary: #666;
+$text-tertiary: #999;
+$bg-page: #f5f5f5;
+$bg-white: #fff;
+$border-color: #eee;
+$radius-md: 12px;
+
+.detail-page {
+  min-height: 100vh;
+  background-color: $bg-page;
+}
+
+/* ---- 图片画廊 ---- */
+.gallery {
+  position: relative;
+  width: 100%;
+  height: 480px;
+
+  &__swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__image {
+    width: 100%;
+    height: 480px;
+  }
+
+  &__indicator {
+    position: absolute;
+    bottom: 20px;
+    right: 24px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 4px 16px;
+  }
+
+  &__indicator-text {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  &__placeholder {
+    width: 100%;
+    height: 480px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__placeholder-text {
+    font-size: 28px;
+    color: $text-tertiary;
+  }
+}
+
+/* ---- 基本信息 ---- */
+.info-section {
+  background-color: $bg-white;
+  padding: 32px 24px;
+  margin-bottom: 16px;
+
+  &__header {
+    margin-bottom: 16px;
+  }
+
+  &__name {
+    font-size: 40px;
+    font-weight: 700;
+    color: $text-primary;
+    display: block;
+  }
+
+  &__name-en {
+    font-size: 24px;
+    color: $text-tertiary;
+    margin-top: 6px;
+    display: block;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__star {
+    background-color: $primary-light;
+    border-radius: 8px;
+    padding: 6px 16px;
+  }
+
+  &__star-text {
+    font-size: 24px;
+    color: $primary;
+    font-weight: 500;
+  }
+
+  &__price-row {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__price {
+    font-size: 44px;
+    font-weight: 700;
+    color: #ff4d4f;
+  }
+
+  &__price-unit {
+    font-size: 24px;
+    color: $text-tertiary;
+    margin-left: 4px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid $border-color;
+  }
+
+  &__icon {
+    font-size: 28px;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+
+  &__text {
+    flex: 1;
+    font-size: 26px;
+    color: $text-secondary;
+  }
+
+  &__arrow {
+    font-size: 32px;
+    color: $text-tertiary;
+    flex-shrink: 0;
+  }
+}
+
+/* ---- 通用 section ---- */
+.section {
+  background-color: $bg-white;
+  margin-bottom: 16px;
+
+  &__title {
+    padding: 28px 24px 0;
+    font-size: 32px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__body {
+    padding: 20px 24px 28px;
+  }
+
+  &__empty {
+    padding: 40px 0;
+    text-align: center;
+  }
+
+  &__empty-text {
+    font-size: 26px;
+    color: $text-tertiary;
+  }
+}
+
+/* ---- 描述 ---- */
+.description-text {
+  font-size: 26px;
+  color: $text-secondary;
+  line-height: 1.8;
+}
+
+/* ---- 房型卡片 ---- */
+.room-card {
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__img {
+    width: 200px;
+    height: 160px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    margin-right: 20px;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__name {
+    font-size: 30px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  &__info-item {
+    font-size: 22px;
+    color: $text-tertiary;
+    background-color: #f7f7f7;
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+
+  &__facilities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  &__facility {
+    font-size: 20px;
+    color: $text-secondary;
+    background-color: #f0f0f0;
+    padding: 2px 10px;
+    border-radius: 4px;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 10px;
+  }
+
+  &__price-row {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__price {
+    font-size: 36px;
+    font-weight: 700;
+    color: #ff4d4f;
+  }
+
+  &__price-unit {
+    font-size: 22px;
+    color: $text-tertiary;
+    margin-left: 4px;
+  }
+
+  &__stock {
+    font-size: 22px;
+    color: $text-tertiary;
+  }
+}
+
+/* ---- 周边信息 ---- */
+.nearby-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__type {
+    background-color: $primary-light;
+    border-radius: 6px;
+    padding: 4px 12px;
+    margin-right: 16px;
+    flex-shrink: 0;
+  }
+
+  &__type-text {
+    font-size: 22px;
+    color: $primary;
+  }
+
+  &__name {
+    flex: 1;
+    font-size: 26px;
+    color: $text-primary;
+  }
+
+  &__distance {
+    font-size: 24px;
+    color: $text-tertiary;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+}
+
+/* ---- 优惠信息 ---- */
+.promo-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid $border-color;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__badge {
+    width: 48px;
+    height: 48px;
+    background-color: #ff4d4f;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    flex-shrink: 0;
+  }
+
+  &__badge-text {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__text {
+    font-size: 28px;
+    font-weight: 500;
+    color: $text-primary;
+    display: block;
+  }
+
+  &__date {
+    font-size: 22px;
+    color: $text-tertiary;
+    margin-top: 4px;
+    display: block;
+  }
+}
+
+/* ---- 骨架屏 ---- */
+.detail-skeleton {
+  &__gallery {
+    width: 100%;
+    height: 480px;
+  }
+
+  &__content {
+    padding: 32px 24px;
+    background-color: $bg-white;
+  }
+
+  .skeleton-block {
+    background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 50%, #f2f2f2 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.4s ease infinite;
+  }
+
+  .skeleton-line {
+    height: 28px;
+    background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 50%, #f2f2f2 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.4s ease infinite;
+    border-radius: 4px;
+    margin-bottom: 16px;
+
+    &--title {
+      width: 60%;
+      height: 40px;
+    }
+
+    &--medium {
+      width: 50%;
+    }
+
+    &--short {
+      width: 30%;
+    }
+
+    &--long {
+      width: 90%;
+    }
+  }
+}
+
+.detail-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+
+  &__text {
+    font-size: 30px;
+    color: $text-tertiary;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

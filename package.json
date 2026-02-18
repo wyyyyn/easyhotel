@@ -1,0 +1,36 @@
+{
+  "name": "easyhotel",
+  "private": true,
+  "scripts": {
+    "dev:server": "pnpm --filter @easyhotel/server dev",
+    "dev:admin": "pnpm --filter @easyhotel/admin dev",
+    "dev:mobile": "pnpm --filter @easyhotel/mobile dev",
+    "build:shared": "pnpm --filter @easyhotel/shared build",
+    "build:api-client": "pnpm --filter @easyhotel/api-client build",
+    "build:server": "pnpm --filter @easyhotel/server build",
+    "build:admin": "pnpm --filter @easyhotel/admin build",
+    "build:mobile": "pnpm --filter @easyhotel/mobile build",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md}\""
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.2.0",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
+  "pnpm": {
+    "overrides": {
+      "@babel/core": "~7.24.0",
+      "@babel/runtime": "~7.24.0"
+    }
+  }
+}
